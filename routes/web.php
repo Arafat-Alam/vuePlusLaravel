@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 // Route::get('/companies', 'CompaniesController@index');
     // Route::get('/companies', 'CompaniesController@index');
 
-Route::group(['middleware' => ['auth'], 'prefix' => '', 'as' => 'admin.'], function () {
-    Route::get('/companies', 'CompaniesController@index')->name('companies.index');
-});
+// Route::group(['middleware' => ['auth'], 'prefix' => '', 'as' => 'admin.'], function () {
+//     Route::get('/companies', 'CompaniesController@index')->name('companies.index');
+// });
+
+Route::get( '/{vue_route?}', 'HomeController@index' )->where( 'vue_route', '(.*)' );

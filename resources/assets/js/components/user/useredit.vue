@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label class="control-label">User name</label>
-                            <input type="text" v-model="user.name" class="form-control">
+                            <input v-validate="'required'" type="text" v-model="user.name" class="form-control">
                         </div>
                     </div>
                     <div class="row">
@@ -86,8 +86,8 @@
 					// email: '',
 					// gender: 'Male',
 					// religion: 'Islam',
-     //                bio: '',
-     //                education: [],
+                    // bio: '',
+                    // education: [],
 				},
 				religions : [
 					'Islam',

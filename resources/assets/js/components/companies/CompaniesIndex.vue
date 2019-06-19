@@ -3,20 +3,23 @@
         <div class="form-group">
             <router-link :to="{name: 'createCompany'}" class="btn btn-success">Create new company</router-link>
             <router-link :to="{name: 'userIndex'}" class="btn btn-success">User</router-link>
+            <a onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-success pull-right">logout</a>
         </div>
-
+        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+            <input type="hidden" name="_token" v-model="csrfToken">
+        </form>
         <div class="panel panel-default">
             <div class="panel-heading">Companies list</div>
             <div class="panel-body">
                 <table class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Website</th>
-                        <th>Email</th>
-                        <th width="100">&nbsp;</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Website</th>
+                            <th>Email</th>
+                            <th width="100">&nbsp;</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <tr v-for="company, index in companies">
@@ -46,6 +49,7 @@
     export default {
         data: function () {
             return {
+                csrfToken : window.csrfToken,
                 companies: []
             }
         },
